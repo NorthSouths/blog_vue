@@ -1,6 +1,37 @@
 <template>
   <div class="container">
-    <Header></Header>
+    <div class="block" style="margin-top: 5%">
+      <el-timeline>
+        <el-timeline-item
+          :timestamp="blog.created"
+          placement="top"
+          v-for="blog in blogs"
+        >
+          <el-card>
+            <h3></h3>
+            <h4>
+              <router-link
+                :to="{ name: 'BlogDetail', params: { blogId: blog.id } }"
+              >
+                {{ blog.title }}
+              </router-link>
+            </h4>
+            <p>{{ blog.description }}</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+
+      <el-pagination
+        class="page"
+        background
+        layout="prev, pager, next"
+        :current-page="currentPage"
+        :page-size="pageSize"
+        :total="total"
+        @current-change="page"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -36,4 +67,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.page {
+  margin: 0 auto;
+  text-align: center;
+}
+.container {
+  overflow: hidden;
+}
+</style>
