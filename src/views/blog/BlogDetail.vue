@@ -3,7 +3,7 @@
     <div class="blog" style="margin-top: 5%">
       <h2>{{ blog.title }}</h2>
       <h2>作者: {{ user.username }}</h2>
-      <el-link icon="el-icon-edit" v-if="ownBlog">
+      <el-link icon="el-icon-edit" v-if="ownBlog" class="edit">
         <router-link :to="{ name: 'BlogEdit', params: { blogId: blog.id } }">
           编辑
         </router-link>
@@ -92,13 +92,29 @@ export default {
 <style scoped>
 .blog {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 800px;
-  padding: 20px 15px;
+  width: 90%;
+  height: 600px;
+  padding: 10px 15px;
 }
-.button {
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: grey;
+}
+a:hover {
+  color: #409eff;
+}
+.router-link-active {
+  text-decoration: none;
 }
 .el-icon-delete {
-  padding: 20px 10px;
+  width: fit-content;
+  margin-left: 20px;
+}
+.el-icon-delete:hover {
+  cursor: pointer;
+  color: #ff3333;
 }
 </style>

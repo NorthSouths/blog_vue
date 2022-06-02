@@ -157,7 +157,7 @@ export default {
       ruleForm: {
         password: "",
         username: "",
-        state: true,
+        state: false,
         passwordagain: "",
         email: "",
       },

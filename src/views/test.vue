@@ -23,7 +23,7 @@
         >
         <el-menu-item
           index="/test/myblog"
-          v-show="hasLogin"
+          v-show="hasLogin && !status"
           style="margin-left: 10%"
           ><i class="el-icon-user-solid"></i>我的博客</el-menu-item
         >
@@ -35,7 +35,7 @@
         >
         <el-menu-item
           index="/test/blog/add"
-          v-show="hasLogin"
+          v-show="hasLogin && !status"
           style="margin-left: 10%"
           ><i class="el-icon-s-order"></i>发布博客</el-menu-item
         >
@@ -59,7 +59,7 @@
         >
         <el-menu-item
           index="/test/rank"
-          v-show="hasLogin"
+          v-show="hasLogin && !status"
           style="margin-left: 10%"
           ><i class="el-icon-medal"></i>我的记录</el-menu-item
         >
@@ -85,6 +85,7 @@ export default {
     return {
       nowDate: "",
       hasLogin: false,
+      // 教师为true，学生为false
       status: false,
       user: {
         username: "请先登录",

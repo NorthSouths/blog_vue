@@ -72,8 +72,8 @@ export default {
 
 <style scoped>
 .main {
-  width: 100%;
-  height: 100%;
-  margin-left: 20px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin: 20px;
 }
 </style>

@@ -15,15 +15,15 @@
               class="success"
               type="success"
               circle
-              icon="el-icon-check"
               @click="right(check.id, check.pid)"
-            ></el-button>
+              >✔</el-button
+            >
             <el-button
               type="danger"
               circle
-              icon="el-icon-close"
               @click="failure(check.id, check.pid)"
-            ></el-button>
+              >X</el-button
+            >
           </el-card>
         </el-timeline-item>
       </el-timeline>
