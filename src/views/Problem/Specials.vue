@@ -2,8 +2,6 @@
   <div>
     <el-main class="main">
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column fixed prop="created" label="发布日期" width="150">
-        </el-table-column>
         <el-table-column prop="sname" label="专题" width="120">
         </el-table-column>
         <el-table-column prop="difficult" label="难度" width="120">

@@ -4,7 +4,11 @@
       <el-timeline>
         <el-empty description="暂无待检查题目" v-show="emptyData"></el-empty>
 
-        <el-timeline-item placement="top" v-for="check in checks">
+        <el-timeline-item
+          placement="top"
+          v-for="(check, index) in checks"
+          :key="index"
+        >
           <el-card>
             <h3></h3>
             <h4>

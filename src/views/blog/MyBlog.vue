@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="block" style="margin-top: 5%">
+      <el-empty description="暂无已发表博客" v-show="emptyData"></el-empty>
       <el-timeline>
         <el-timeline-item
           :timestamp="blog.created"
@@ -43,11 +44,16 @@ export default {
   components: { Header },
   data() {
     return {
-      blogs: {},
+      blogs: [],
       currentPage: 1,
       total: 0,
       pageSize: 5,
     };
+  },
+  computed: {
+    emptyData() {
+      return this.blogs.length === 0 ? true : false;
+    },
   },
   methods: {
     page(currentPage) {

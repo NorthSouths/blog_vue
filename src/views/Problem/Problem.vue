@@ -17,7 +17,7 @@
       <h3>请在框内写入C++代码:</h3>
 
       <el-form ref="Form" :model="ruleForm" :rules="rules" label-width="0px">
-        <el-form-item prop="content">
+        <el-form-item prop="content" size="large">
           <el-input type="textarea" v-model="ruleForm.content"></el-input>
         </el-form-item>
         <el-form-item>
@@ -25,6 +25,10 @@
           <el-button @click="resetForm('Form')">重置</el-button>
         </el-form-item>
       </el-form>
+
+      <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+        <h3>正在提交中…</h3>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -37,6 +41,7 @@ export default {
   components: { Header },
   data() {
     return {
+      dialogVisible: false,
       problem: [],
       ruleForm: {
         pid: "",
@@ -55,6 +60,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const _this = this;
+          this.dialogVisible = true;
           this.$axios
             .post("/check", this.ruleForm, {
               headers: {
@@ -62,11 +68,20 @@ export default {
               },
             })
             .then((res) => {
-              this.$notify.success({
-                title: "Info",
-                message: res.data.data,
-                showClose: false,
+              console.log(res.data);
+              let data = res.data.data;
+              let showData = `
+                提交结果：${data.status},
+                执行用时：${data.time},
+                内存消耗：${data.memory},
+                程序语言：${data.language}
+              `;
+              this.$alert(showData, "运行结果", {
+                confirmButtonText: "确定",
               });
+            })
+            .finally(() => {
+              this.dialogVisible = false;
             });
         }
       });

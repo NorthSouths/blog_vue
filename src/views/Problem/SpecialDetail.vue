@@ -2,8 +2,6 @@
   <div>
     <el-main id="main">
       <el-table :data="problem" style="width: 100%">
-        <el-table-column fixed prop="created" label="发布日期" width="120">
-        </el-table-column>
         <el-table-column prop="title" label="题目" width="120">
         </el-table-column>
         <el-table-column prop="status" label="成功数" width="120">
